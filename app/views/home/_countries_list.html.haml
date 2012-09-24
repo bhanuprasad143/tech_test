@@ -14,7 +14,7 @@
     .t-row.span7.no-lmargin{:class => bg_class}
       .t-cell.span2= country.name
       .t-cell.span2= country.currency ? country.currency['code'] : 'n/a'
-      .t-cell.span1= country.currency ? country.currency['symbol'] : 'n/a'
+      .t-cell.span1= country.currency ? (country.currency['symbol'].blank? ? 'n/a' : country.currency['symbol']) : 'n/a'
       - if @list == 'all'
         .t-cell.span1= current_user.visit?(country.name)
 
