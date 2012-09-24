@@ -3,20 +3,20 @@
 - else
   .t-row.t-head.span7.no-lmargin
     .th.span2= link_to 'COUNTRY', 'name', :rel => "#{sort_field == 0 ? sort_type : ''}", :class => 'sort'
-    .th.span2= link_to 'CURRENCY', 'currency', :rel => "#{sort_field == 1 ? sort_type : ''}", :class => 'sort'
+    .th.span1= link_to 'CURRENCY', 'currency', :rel => "#{sort_field == 1 ? sort_type : ''}", :class => 'sort'
     .th.span1 SYMBOL
-    - if @list == 'all'
-      .th.span1 VISITED
+    .th.span1 VISIT
+    .th.span1 COLLECT
   - bg_class = 'event'
   - @countries.each do |country|
     -# c = Country.find_country_by_alpha2(country[1].downcase)
     - bg_class = bg_class == 'odd' ? 'even' : 'odd'
     .t-row.span7.no-lmargin{:class => bg_class}
       .t-cell.span2= country.name
-      .t-cell.span2= country.currency ? country.currency['code'] : 'n/a'
+      .t-cell.span1= country.currency ? country.currency['code'] : 'n/a'
       .t-cell.span1= country.currency ? (country.currency['symbol'].blank? ? 'n/a' : country.currency['symbol']) : 'n/a'
-      - if @list == 'all'
-        .t-cell.span1= current_user.visit?(country.name)
+      .t-cell.span1= current_user.visit?(country.name)
+      .t-cell.span1= country.currency ? current_user.collect?(country.currency['symbol']) : 'n/a'
 
 :javascript
   $(document).ready(function(){

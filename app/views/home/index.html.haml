@@ -11,8 +11,15 @@
       %li You have visited 1 country
     - else
       %li You have visited #{current_user.visits.size} countries
+    %li.nav-header Visited Countries Count
+    - if current_user.collects.blank?
+      %li You don't have any collected currency
+    - elsif current_user.collects.size==1
+      %li You have collected 1 currency
+    - else
+      %li You have collected #{current_user.collects.size} currencies
     %li.nav-header Unvisited Countries
-    %li select coutry to add to visited list
+    %li select country to add to visited list
     ~ form_tag user_update_visit_path do
       = select_tag :country, options_for_select(@unvisits)
       = submit_tag "Set Visited"
