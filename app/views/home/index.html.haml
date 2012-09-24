@@ -1,8 +1,9 @@
 .span3.no-lmargin
   %h3 Countries
   %ul.nav.nav-list
-    %li.nav-header= link_to 'All Country', root_path
-    %li.nav-header= link_to 'Visited Country', root_path(:list => 'visited')
+    %li.nav-header= link_to 'All Countries', root_path
+    %li.nav-header= link_to 'Visited Countries', root_path(:list => 'visited')
+    %li.nav-header= link_to 'Unvisited Countries', root_path(:list => 'unvisited')
     %li.nav-header Visited Countries Count
     - if current_user.visits.blank?
       %li You don't have any visited country

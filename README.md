@@ -1,2 +1,2 @@
-tech_test
+currency_collection
 =========

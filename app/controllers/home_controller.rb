@@ -1,12 +1,14 @@
 class HomeController < ApplicationController
   before_filter :authenticate_user!
   def index
+    @country_names = Country.all.collect {|c| c[0]}
+    @unvisits = (@country_names - current_user.visited_countries).sort{|x,y| x <=> y }
+    
     @countries = country_object_list(Country.all.collect {|c| c[0]})
     @list = params['list'] || 'all'
     @countries = country_object_list(current_user.visited_countries) if @list=='visited'
-    @countries = @countries.sort!{|x,y| x.name <=> y.name }
-    @country_names = Country.all.collect {|c| c[0]}
-    @unvisits = (@country_names - current_user.visited_countries).sort{|x,y| x <=> y }
+    @countries = country_object_list(@unvisits) if @list=='unvisited'
+    @countries = @countries.sort!{|x,y| x.name <=> y.name }  
   end
   
   def sort_country

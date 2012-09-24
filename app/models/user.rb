@@ -8,10 +8,14 @@ class User < ActiveRecord::Base
   has_many :visits
  
   def visit?(country)
-    Visit.where(:user_id => self.id, :country => country).first
+    return Visit.where(:user_id => self.id, :country => country).first ? true : false
   end
   
   def visited_countries
+    visits.map(&:country)
+  end
+  
+  def unvisited_countries
     visits.map(&:country)
   end
   

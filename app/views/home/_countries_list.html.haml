@@ -3,8 +3,10 @@
 - else
   .t-row.t-head.span7.no-lmargin
     .th.span2= link_to 'COUNTRY', 'name', :rel => "#{sort_field == 0 ? sort_type : ''}", :class => 'sort'
-    .th.span2= link_to 'CURRENCIES', 'currency', :rel => "#{sort_field == 1 ? sort_type : ''}", :class => 'sort'
-    .th.span2 CURRENCIES SYMBOL
+    .th.span2= link_to 'CURRENCY', 'currency', :rel => "#{sort_field == 1 ? sort_type : ''}", :class => 'sort'
+    .th.span1 SYMBOL
+    - if @list == 'all'
+      .th.span1 VISITED
   - bg_class = 'event'
   - @countries.each do |country|
     -# c = Country.find_country_by_alpha2(country[1].downcase)
@@ -12,7 +14,9 @@
     .t-row.span7.no-lmargin{:class => bg_class}
       .t-cell.span2= country.name
       .t-cell.span2= country.currency ? country.currency['code'] : 'n/a'
-      .t-cell.span2= country.currency ? country.currency['symbol'] : 'n/a'
+      .t-cell.span1= country.currency ? country.currency['symbol'] : 'n/a'
+      - if @list == 'all'
+        .t-cell.span1= current_user.visit?(country.name)
 
 :javascript
   $(document).ready(function(){

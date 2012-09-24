@@ -1,4 +1,4 @@
-TechTest::Application.routes.draw do
+CurrencyCollection::Application.routes.draw do
   
   get 'home/index'
   devise_for :users

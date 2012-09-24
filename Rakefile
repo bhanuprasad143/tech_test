@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-TechTest::Application.load_tasks
+CurrencyCollection::Application.load_tasks
