@@ -1,4 +1,4 @@
-.span3
+.span3.no-lmargin
   %h3 Countries
   %ul.nav.nav-list
     %li.nav-header= link_to 'All Country', root_path
@@ -16,7 +16,7 @@
       = select_tag :country, options_for_select(@unvisits)
       = submit_tag "Set Visited"
 
-.span.span9
+.span9
   %h3= @list == 'visited' ? "Visited Countries" : "All Countries"
   .country-table.span9.no-lmargin
     = render :partial => 'countries_list', :locals => {:sort_type => 'desc', :sort_field => 0}
