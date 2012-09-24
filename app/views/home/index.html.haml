@@ -1,14 +1,15 @@
 .span3
   %h3 Countries
   %ul.nav.nav-list
-    %li.nav-header Visited Countries list
+    %li.nav-header= link_to 'All Country', root_path
+    %li.nav-header= link_to 'Visited Country', root_path(:list => 'visited')
+    %li.nav-header Visited Countries Count
     - if current_user.visits.blank?
-      %li You haven't has any visited country
-    ~ form_tag user_update_visit_path do
-      - current_user.visits.each do |c|
-        %li
-          = check_box_tag "countries[]", c[0], current_user.visit?(c[0]) ? true : false
-          = c[0]
+      %li You don't have any visited country
+    - elsif current_user.visits.size==1
+      %li You have visited 1 country
+    - else
+      %li You have visited #{current_user.visits.size} countries
     %li.nav-header Unvisited Countries
     %li select coutry to add to visited list
     ~ form_tag user_update_visit_path do
@@ -16,6 +17,6 @@
       = submit_tag "Set Visited"
 
 .span.span9
-  %h3 Countries & Currencies Table
+  %h3= @content_title
   .country-table.span9.no-lmargin
     = render :partial => 'countries_list', :locals => {:sort_type => 'desc', :sort_field => 0}

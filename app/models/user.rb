@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
     Visit.where(:user_id => self.id, :country => country).first
   end
   
+  def visited_countries
+    visits.map(&:country)
+  end
+  
 end
