@@ -15,7 +15,7 @@
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="images/favicon.ico" rel="shortcut icon")
-
+    = javascript_include_tag "application"
 
   %body
     .navbar.navbar-fixed-top
@@ -36,26 +36,11 @@
                 |
                 = link_to 'Sign up', new_registration_path(:user)
 
-    .container
-
-      .content
+    .container{:style => "width: 98%; margin-left: 20px;"}
+      .content{:style => "width: 100%"}
         .row
-          .span9
-            = bootstrap_flash
-            = yield
-          .span3
-            .well.sidebar-nav
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
-    
+          = bootstrap_flash
+          = yield
       %footer
         %p &copy; Company 2012
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "application"
+    

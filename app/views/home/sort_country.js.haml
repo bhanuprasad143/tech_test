@@ -1,0 +1,1 @@
+$('.country-table').html("#{escape_javascript(render :partial => 'countries_list', :locals => {:sort_type => @sort_type, :sort_field => @field})}");

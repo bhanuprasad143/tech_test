@@ -1,3 +1,23 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.no-lmargin{
+  margin-left: 0;
+}
+.country-table{
+  .t-head{
+    background: #bbb;
+    padding: 5px 10px;
+  }
+  .odd{
+    background: #DDFFDD;
+    padding: 5px 10px;
+  }
+
+  .even{
+    background: #EEFFEE;
+    padding: 5px 10px;
+  }
+
+}
