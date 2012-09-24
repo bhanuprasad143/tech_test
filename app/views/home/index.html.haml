@@ -17,6 +17,6 @@
       = submit_tag "Set Visited"
 
 .span.span9
-  %h3= @content_title
+  %h3= @list == 'visited' ? "Visited Countries" : "All Countries"
   .country-table.span9.no-lmargin
     = render :partial => 'countries_list', :locals => {:sort_type => 'desc', :sort_field => 0}

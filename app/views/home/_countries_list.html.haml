@@ -19,6 +19,6 @@
     
     $("a.sort").click(function(e){
       e.preventDefault();
-      $.get("#{sort_country_path}", {field: $(this).attr('href'), type: $(this).attr('rel')});
+      $.get("#{sort_country_path}", {field: $(this).attr('href'), type: $(this).attr('rel'), list: "#{@list}"});
     });
   });
