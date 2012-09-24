@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-
+  before_filter :authenticate_user!
   def index
     @countries = country_object_list(Country.all.collect {|c| c[0]})
     @list = params['list'] || 'all'
