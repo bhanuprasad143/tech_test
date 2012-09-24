@@ -27,10 +27,14 @@
             %span.icon-bar
           %a.brand(href="#") TechTest
           .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+            %ul.nav{:style => "margin-top: 10px;"}
+              - if user_signed_in?
+                hi #{current_user.email},
+                = link_to 'Sign out', destroy_user_session_path, :method => :delete
+              - else
+                = link_to 'Sign in', new_session_path(:user)
+                |
+                = link_to 'Sign up', new_registration_path(:user)
 
     .container
 
